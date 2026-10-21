@@ -114,8 +114,8 @@
 <body>
 
 <header>
-  <h1>Mes <span>applications</span></h1>
-  <p>Des outils pour les pilotes RC, les drones et la fabrication composite. Cliquez sur une carte pour ouvrir l'application.</p>
+  <h1 data-i18n="title">Mes <span>applications</span></h1>
+  <p data-i18n="intro">Des outils pour les pilotes RC, les drones et la fabrication composite. Cliquez sur une carte pour ouvrir l'application.</p>
 </header>
 
 <main>
@@ -149,8 +149,8 @@
     </div>
     <div class="body">
       <h2>Vox-Pack<span class="badge">EdgeTX</span></h2>
-      <p>Crée les fichiers de voix de ta radio EdgeTX : annonces personnalisées, prêtes à copier sur la carte SD.</p>
-      <span class="link">Ouvrir sur GitHub Pages →</span>
+      <p data-i18n="vox">Crée les fichiers de voix de ta radio EdgeTX : annonces personnalisées, prêtes à copier sur la carte SD.</p>
+      <span class="link" data-i18n="openGh">Ouvrir sur GitHub Pages →</span>
     </div>
   </a>
 
@@ -193,9 +193,9 @@
       </svg>
     </div>
     <div class="body">
-      <h2>FlyWithMe<span class="badge">Communauté</span></h2>
-      <p>Never fly alone : trouve des pilotes drone et avion près de chez toi, rejoins des sessions de vol et consulte zones de restriction et météo sur la carte.</p>
-      <span class="link">Ouvrir sur Render →</span>
+      <h2>FlyWithMe<span class="badge" data-i18n="community">Communauté</span></h2>
+      <p data-i18n="fly">Never fly alone : trouve des pilotes drone et avion près de chez toi, rejoins des sessions de vol et consulte zones de restriction et météo sur la carte.</p>
+      <span class="link" data-i18n="openRender">Ouvrir sur Render →</span>
     </div>
   </a>
 
@@ -243,8 +243,8 @@
     </div>
     <div class="body">
       <h2>UAS Sizing Tool<span class="badge">Drones</span></h2>
-      <p>Outil de pré-dimensionnement de drones : estime masse, motorisation, batterie et autonomie à partir de ta mission.</p>
-      <span class="link">Ouvrir sur Render →</span>
+      <p data-i18n="uas">Outil de pré-dimensionnement de drones : estime masse, motorisation, batterie et autonomie à partir de ta mission.</p>
+      <span class="link" data-i18n="openRender">Ouvrir sur Render →</span>
     </div>
   </a>
 
@@ -287,8 +287,8 @@
     </div>
     <div class="body">
       <h2>CompoForm<span class="badge">Composite</span></h2>
-      <p>Conçois des moules pour fibre de verre ou carbone à partir de fichiers STL, 3MF, OBJ ou STEP, directement dans le navigateur, sans envoyer tes fichiers.</p>
-      <span class="link">Ouvrir sur GitHub Pages →</span>
+      <p data-i18n="compo">Conçois des moules pour fibre de verre ou carbone à partir de fichiers STL, 3MF, OBJ ou STEP, directement dans le navigateur, sans envoyer tes fichiers.</p>
+      <span class="link" data-i18n="openGh">Ouvrir sur GitHub Pages →</span>
     </div>
   </a>
 
@@ -297,6 +297,39 @@
 <footer>
   © <span id="year">2026</span> · <a href="https://github.com/tguillaume02">github.com/tguillaume02</a>
 </footer>
+
+<script>
+  /* ===== Traductions : français si le navigateur est en français, anglais sinon ===== */
+  const I18N = {
+    en: {
+      pageTitle: "tguillaume02 · Apps",
+      metaDesc: "Vox-Pack, FlyWithMe, UAS Sizing Tool and CompoForm: tools for RC pilots, drones and composite manufacturing.",
+      title: "My <span>apps</span>",
+      intro: "Tools for RC pilots, drones and composite manufacturing. Click a card to open the app.",
+      vox: "Create the voice files for your EdgeTX radio: custom announcements, ready to copy to the SD card.",
+      fly: "Never fly alone: find drone and plane pilots near you, join flying sessions and check restricted zones and weather on the map.",
+      uas: "Preliminary drone sizing tool: estimates weight, propulsion, battery and endurance from your mission.",
+      compo: "Design fiberglass or carbon molds from STL, 3MF, OBJ or STEP files, right in your browser, without uploading your files.",
+      community: "Community",
+      openGh: "Open on GitHub Pages →",
+      openRender: "Open on Render →",
+      shotAlt: "Screenshot of "
+    }
+  };
+  const LANG = (navigator.languages || [navigator.language || "fr"])
+    .some(l => l.toLowerCase().startsWith("fr")) ? "fr" : "en";
+  const t = key => (I18N[LANG] && I18N[LANG][key]) || null;
+
+  if (LANG !== "fr") {
+    document.documentElement.lang = LANG;
+    document.title = t("pageTitle");
+    document.querySelector('meta[name="description"]').content = t("metaDesc");
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const txt = t(el.dataset.i18n);
+      if (txt) el.innerHTML = txt;
+    });
+  }
+</script>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -310,7 +343,7 @@
     const src = card.dataset.shot ||
       "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(card.href) + "?w=1200&h=750";
     const img = new Image();
-    img.alt = "Capture d'écran de " + card.querySelector("h2").firstChild.textContent.trim();
+    img.alt = (t("shotAlt") || "Capture d'écran de ") + card.querySelector("h2").firstChild.textContent.trim();
     img.loading = "lazy";
     img.onload = () => {
       // Le service renvoie une petite image d'attente (400×300) tant que la capture n'est pas prête
