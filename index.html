@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tguillaume02 · Applications</title>
+<meta name="description" content="Vox-Pack, FlyWithMe, UAS Sizing Tool et CompoForm : des outils pour les pilotes RC, les drones et la fabrication composite.">
+<meta name="theme-color" content="#0b1015">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --text: #15202b;
+    --muted: #5b6b7c;
+    --accent: #e8590c;
+    --border: #dfe5ec;
+    --shadow: 0 2px 10px rgba(21, 32, 43, .06);
+    --shadow-hover: 0 14px 32px rgba(21, 32, 43, .14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1015;
+      --card: #151d25;
+      --text: #e8eef4;
+      --muted: #93a3b4;
+      --accent: #ff8a3d;
+      --border: #24303c;
+      --shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      --shadow-hover: 0 14px 32px rgba(0, 0, 0, .55);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.55;
+  }
+  header {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 16px 24px;
+  }
+  header h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  header h1 span { color: var(--accent); }
+  header p { margin: 0; color: var(--muted); max-width: 62ch; }
+
+  main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 16px 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+    outline: none;
+  }
+  .thumb { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--border); }
+  .thumb svg, .thumb img { width: 100%; height: 100%; display: block; transition: transform .35s ease, opacity .4s ease; }
+  .thumb img { position: absolute; inset: 0; object-fit: cover; object-position: top center; opacity: 0; }
+  .thumb.shot img { opacity: 1; }
+  .card:hover .thumb svg, .card:hover .thumb img { transform: scale(1.05); }
+  .body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  .body h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.25rem;
+    margin: 0 0 6px;
+  }
+  .body p { margin: 0 0 14px; color: var(--muted); font-size: .95rem; flex: 1; }
+  .link { font-size: .85rem; font-weight: 500; color: var(--accent); }
+  .badge {
+    display: inline-block;
+    font-family: Inter, sans-serif;
+    font-size: .68rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 2px 8px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 0 16px 40px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mes <span>applications</span></h1>
+  <p>Des outils pour les pilotes RC, les drones et la fabrication composite. Cliquez sur une carte pour ouvrir l'application.</p>
+</header>
+
+<main>
+
+  <!-- ===================== VOX-PACK ===================== -->
+  <a class="card" href="https://tguillaume02.github.io/vox-pack-web/" target="_blank" rel="noopener">
+    <div class="thumb">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radiocommande et ondes sonores">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3b2a6b"/><stop offset="1" stop-color="#7b3fe4"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#g1)"/>
+        <!-- radio -->
+        <rect x="70" y="70" width="120" height="90" rx="18" fill="#1b1430" stroke="#c9b6ff" stroke-width="2"/>
+        <rect x="102" y="84" width="56" height="34" rx="4" fill="#2a2147" stroke="#c9b6ff" stroke-width="1.5"/>
+        <path d="M108 104 l8 -8 l8 6 l8 -10 l8 12 l8 -4" stroke="#7ef0c6" stroke-width="2" fill="none"/>
+        <circle cx="96" cy="138" r="13" fill="#2a2147" stroke="#c9b6ff" stroke-width="2"/>
+        <circle cx="164" cy="138" r="13" fill="#2a2147" stroke="#c9b6ff" stroke-width="2"/>
+        <circle cx="96" cy="138" r="4" fill="#c9b6ff"/><circle cx="164" cy="138" r="4" fill="#c9b6ff"/>
+        <line x1="178" y1="72" x2="196" y2="30" stroke="#c9b6ff" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="196" cy="30" r="5" fill="#ffd166"/>
+        <!-- ondes -->
+        <g fill="none" stroke="#ffd166" stroke-linecap="round" stroke-width="4">
+          <path d="M215 95 q12 20 0 40" opacity=".95"/>
+          <path d="M232 82 q22 33 0 66" opacity=".7"/>
+          <path d="M250 70 q32 45 0 90" opacity=".45"/>
+        </g>
+      </svg>
+    </div>
+    <div class="body">
+      <h2>Vox-Pack<span class="badge">EdgeTX</span></h2>
+      <p>Crée les fichiers de voix de ta radio EdgeTX : annonces personnalisées, prêtes à copier sur la carte SD.</p>
+      <span class="link">Ouvrir sur GitHub Pages →</span>
+    </div>
+  </a>
+
+  <!-- ===================== FLYWITHME ===================== -->
+  <a class="card" href="https://flywithme-0ock.onrender.com/" target="_blank" rel="noopener">
+    <div class="thumb">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Carte avec des pilotes et une trajectoire de vol">
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0b1015"/><stop offset="1" stop-color="#14354a"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#g2)"/>
+        <!-- grille carte -->
+        <g stroke="#1f4a63" stroke-width="1">
+          <path d="M0 40 H320 M0 80 H320 M0 120 H320 M0 160 H320"/>
+          <path d="M40 0 V200 M100 0 V200 M160 0 V200 M220 0 V200 M280 0 V200"/>
+        </g>
+        <path d="M0 150 C60 120 90 170 150 140 S250 90 320 110" stroke="#2c6e8f" stroke-width="10" fill="none" opacity=".5"/>
+        <!-- zone de restriction -->
+        <circle cx="250" cy="60" r="34" fill="#ff5d5d" opacity=".18" stroke="#ff5d5d" stroke-dasharray="5 4"/>
+        <!-- trajectoire -->
+        <path d="M70 140 C110 70 170 60 200 110" stroke="#38d9a9" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/>
+        <!-- pins -->
+        <g>
+          <path d="M70 140 c-10 -14 -14 -20 -14 -27 a14 14 0 0 1 28 0 c0 7 -4 13 -14 27z" fill="#38d9a9"/>
+          <circle cx="70" cy="112" r="5" fill="#0b1015"/>
+          <path d="M200 110 c-10 -14 -14 -20 -14 -27 a14 14 0 0 1 28 0 c0 7 -4 13 -14 27z" fill="#ffa94d"/>
+          <circle cx="200" cy="82" r="5" fill="#0b1015"/>
+          <path d="M130 170 c-8 -11 -11 -16 -11 -21 a11 11 0 0 1 22 0 c0 5 -3 10 -11 21z" fill="#74c0fc"/>
+          <circle cx="130" cy="148" r="4" fill="#0b1015"/>
+        </g>
+        <!-- drone -->
+        <g transform="translate(140 62)" stroke="#e8eef4" stroke-width="2.5" fill="none">
+          <line x1="-12" y1="-12" x2="12" y2="12"/><line x1="12" y1="-12" x2="-12" y2="12"/>
+          <circle cx="-12" cy="-12" r="6"/><circle cx="12" cy="-12" r="6"/>
+          <circle cx="-12" cy="12" r="6"/><circle cx="12" cy="12" r="6"/>
+          <rect x="-4" y="-4" width="8" height="8" fill="#e8eef4"/>
+        </g>
+      </svg>
+    </div>
+    <div class="body">
+      <h2>FlyWithMe<span class="badge">Communauté</span></h2>
+      <p>Never fly alone : trouve des pilotes drone et avion près de chez toi, rejoins des sessions de vol et consulte zones de restriction et météo sur la carte.</p>
+      <span class="link">Ouvrir sur Render →</span>
+    </div>
+  </a>
+
+  <!-- ===================== UAS SIZING TOOL ===================== -->
+  <a class="card" href="https://uas-sizing-tool.onrender.com/" target="_blank" rel="noopener">
+    <div class="thumb">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan coté d'un drone">
+        <defs>
+          <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0c3d6b"/><stop offset="1" stop-color="#1971c2"/>
+          </linearGradient>
+          <pattern id="grid3" width="16" height="16" patternUnits="userSpaceOnUse">
+            <path d="M16 0 H0 V16" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+          </pattern>
+        </defs>
+        <rect width="320" height="200" fill="url(#g3)"/>
+        <rect width="320" height="200" fill="url(#grid3)"/>
+        <!-- drone vue de dessus -->
+        <g stroke="#e7f5ff" stroke-width="2" fill="none">
+          <line x1="110" y1="60" x2="210" y2="140"/>
+          <line x1="210" y1="60" x2="110" y2="140"/>
+          <circle cx="110" cy="60" r="22" stroke-dasharray="4 3"/>
+          <circle cx="210" cy="60" r="22" stroke-dasharray="4 3"/>
+          <circle cx="110" cy="140" r="22" stroke-dasharray="4 3"/>
+          <circle cx="210" cy="140" r="22" stroke-dasharray="4 3"/>
+          <rect x="145" y="85" width="30" height="30" rx="5" fill="#0c3d6b"/>
+        </g>
+        <!-- cotes -->
+        <g stroke="#ffd43b" stroke-width="1.5" fill="#ffd43b">
+          <line x1="88" y1="182" x2="232" y2="182"/>
+          <line x1="88" y1="176" x2="88" y2="188"/><line x1="232" y1="176" x2="232" y2="188"/>
+          <line x1="262" y1="38" x2="262" y2="162"/>
+          <line x1="256" y1="38" x2="268" y2="38"/><line x1="256" y1="162" x2="268" y2="162"/>
+        </g>
+        <!-- petites jauges -->
+        <g font-family="Inter, sans-serif" font-size="11" fill="#e7f5ff">
+          <rect x="14" y="16" width="64" height="7" rx="3.5" fill="#ffffff" opacity=".2"/>
+          <rect x="14" y="16" width="44" height="7" rx="3.5" fill="#69db7c"/>
+          <rect x="14" y="30" width="64" height="7" rx="3.5" fill="#ffffff" opacity=".2"/>
+          <rect x="14" y="30" width="28" height="7" rx="3.5" fill="#ffd43b"/>
+          <rect x="14" y="44" width="64" height="7" rx="3.5" fill="#ffffff" opacity=".2"/>
+          <rect x="14" y="44" width="54" height="7" rx="3.5" fill="#ff8787"/>
+        </g>
+      </svg>
+    </div>
+    <div class="body">
+      <h2>UAS Sizing Tool<span class="badge">Drones</span></h2>
+      <p>Outil de pré-dimensionnement de drones : estime masse, motorisation, batterie et autonomie à partir de ta mission.</p>
+      <span class="link">Ouvrir sur Render →</span>
+    </div>
+  </a>
+
+  <!-- ===================== COMPOFORM ===================== -->
+  <a class="card" href="https://tguillaume02.github.io/compoform/" target="_blank" rel="noopener">
+    <div class="thumb">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Moule composite en deux parties autour d'une pièce">
+        <defs>
+          <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2b2f33"/><stop offset="1" stop-color="#4a5056"/>
+          </linearGradient>
+          <pattern id="carbon" width="8" height="8" patternUnits="userSpaceOnUse">
+            <rect width="8" height="8" fill="#1d2023"/>
+            <rect width="4" height="4" fill="#2d3135"/><rect x="4" y="4" width="4" height="4" fill="#2d3135"/>
+          </pattern>
+        </defs>
+        <rect width="320" height="200" fill="url(#g4)"/>
+        <!-- demi-moule haut -->
+        <g transform="translate(0 -10)">
+          <path d="M60 40 H260 V90 H230 C215 60 105 60 90 90 H60 Z" fill="url(#carbon)" stroke="#ffa94d" stroke-width="2"/>
+          <circle cx="75" cy="55" r="4" fill="#ffa94d"/><circle cx="245" cy="55" r="4" fill="#ffa94d"/>
+        </g>
+        <!-- pièce -->
+        <path d="M90 100 C105 66 215 66 230 100 C215 134 105 134 90 100 Z" fill="#d0ebff" stroke="#74c0fc" stroke-width="2"/>
+        <g stroke="#74c0fc" stroke-width="1" opacity=".7" fill="none">
+          <path d="M120 82 L120 118 M150 75 L150 125 M180 75 L180 125 M210 84 L210 116"/>
+          <path d="M95 100 H225"/>
+        </g>
+        <!-- demi-moule bas -->
+        <g transform="translate(0 10)">
+          <path d="M60 160 H260 V110 H230 C215 140 105 140 90 110 H60 Z" fill="url(#carbon)" stroke="#ffa94d" stroke-width="2"/>
+          <circle cx="75" cy="145" r="4" fill="#ffa94d"/><circle cx="245" cy="145" r="4" fill="#ffa94d"/>
+        </g>
+        <!-- flèches d'ouverture -->
+        <g stroke="#ffa94d" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M285 70 V45 M279 51 L285 45 L291 51"/>
+          <path d="M285 130 V155 M279 149 L285 155 L291 149"/>
+        </g>
+      </svg>
+    </div>
+    <div class="body">
+      <h2>CompoForm<span class="badge">Composite</span></h2>
+      <p>Conçois des moules pour fibre de verre ou carbone à partir de fichiers STL, 3MF, OBJ ou STEP, directement dans le navigateur, sans envoyer tes fichiers.</p>
+      <span class="link">Ouvrir sur GitHub Pages →</span>
+    </div>
+  </a>
+
+</main>
+
+<footer>
+  © <span id="year">2026</span> · <a href="https://github.com/tguillaume02">github.com/tguillaume02</a>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* Captures d'écran réelles de chaque app.
+     - Pour utiliser votre propre capture, ajoutez data-shot="images/nom.png" sur la carte <a>.
+     - Sinon, une capture est générée automatiquement depuis l'adresse de l'app.
+     - En cas d'échec, l'illustration SVG reste affichée. */
+  document.querySelectorAll(".card").forEach(card => {
+    const thumb = card.querySelector(".thumb");
+    const src = card.dataset.shot ||
+      "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(card.href) + "?w=1200&h=750";
+    const img = new Image();
+    img.alt = "Capture d'écran de " + card.querySelector("h2").firstChild.textContent.trim();
+    img.loading = "lazy";
+    img.onload = () => {
+      // Le service renvoie une petite image d'attente (400×300) tant que la capture n'est pas prête
+      if (img.naturalWidth >= 600 || card.dataset.shot) thumb.classList.add("shot");
+      else if ((img.tries = (img.tries || 0) + 1) <= 5)
+        setTimeout(() => { img.src = src + "&r=" + Date.now(); }, 4000);
+    };
+    img.onerror = () => img.remove();
+    img.src = src;
+    thumb.appendChild(img);
+  });
+</script>
+</body>
+</html>
