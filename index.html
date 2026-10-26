@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>tguillaume02 · Applications</title>
-<meta name="description" content="Vox-Pack, FlyWithMe, UAS Sizing Tool et CompoForm : des outils pour les pilotes RC, les drones et la fabrication composite.">
+<meta name="description" content="Vox-Pack, FlyWithMe, UAS Sizing Tool, CompoForm et Telemetry Overlay : des outils pour les pilotes RC, les drones et la fabrication composite.">
 <meta name="theme-color" content="#0b1015">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -320,6 +320,45 @@
     </div>
   </a>
 
+  <!-- ===================== TELEMETRY OVERLAY ===================== -->
+  <a class="card" href="https://tguillaume02.github.io/telemetry-overlay/" target="_blank" rel="noopener"
+     data-shot="https://tguillaume02.github.io/telemetry-overlay/captures/interface.png">
+    <div class="thumb">
+      <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vidéo de vol avec jauges de télémétrie incrustées">
+        <defs>
+          <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a7bd5"/><stop offset=".6" stop-color="#8ec5fc"/><stop offset=".6" stop-color="#4f7942"/><stop offset="1" stop-color="#2d4a26"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="200" fill="url(#g5)"/>
+        <!-- horizon artificiel -->
+        <g transform="translate(160 100)">
+          <circle r="34" fill="#0b1015" opacity=".55" stroke="#e8eef4" stroke-width="2"/>
+          <path d="M-22 0 H-8 M8 0 H22 M0 -4 V4" stroke="#ffd166" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <!-- jauges -->
+        <g font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ffffff">
+          <rect x="14" y="14" width="78" height="24" rx="6" fill="#0b1015" opacity=".6"/>
+          <text x="22" y="31">ALT 124 m</text>
+          <rect x="228" y="14" width="78" height="24" rx="6" fill="#0b1015" opacity=".6"/>
+          <text x="236" y="31">72 km/h</text>
+          <rect x="14" y="160" width="78" height="24" rx="6" fill="#0b1015" opacity=".6"/>
+          <rect x="22" y="168" width="44" height="8" rx="2" fill="#69db7c"/>
+          <text x="70" y="177">%</text>
+        </g>
+        <!-- mini-carte trace GPS -->
+        <rect x="238" y="128" width="68" height="56" rx="6" fill="#0b1015" opacity=".6"/>
+        <path d="M248 172 C258 140 276 168 284 146 S300 150 296 138" stroke="#38d9a9" stroke-width="2.5" fill="none"/>
+        <circle cx="296" cy="138" r="3.5" fill="#ffa94d"/>
+      </svg>
+    </div>
+    <div class="body">
+      <h2>Telemetry Overlay<span class="badge" data-i18n="video">Vidéo</span></h2>
+      <p data-i18n="telem">Incruste la télémétrie de ton vol (altitude, vitesse, batterie, liaison radio, trace GPS) issue d'un log EdgeTX, ArduPilot, INAV ou DJI sur tes vidéos, directement dans le navigateur.</p>
+      <span class="link" data-i18n="openGh">Ouvrir sur GitHub Pages →</span>
+    </div>
+  </a>
+
 </main>
 
 <aside class="ad" aria-label="Publicité">
@@ -346,13 +385,15 @@
   const I18N = {
     en: {
       pageTitle: "tguillaume02 · Apps",
-      metaDesc: "Vox-Pack, FlyWithMe, UAS Sizing Tool and CompoForm: tools for RC pilots, drones and composite manufacturing.",
+      metaDesc: "Vox-Pack, FlyWithMe, UAS Sizing Tool, CompoForm and Telemetry Overlay: tools for RC pilots, drones and composite manufacturing.",
       title: "My <span>apps</span>",
       intro: "Tools for RC pilots, drones and composite manufacturing. Click a card to open the app.",
       vox: "Create the voice files for your EdgeTX radio: custom announcements, ready to copy to the SD card.",
       fly: "Never fly alone: find drone and plane pilots near you, join flying sessions and check restricted zones and weather on the map.",
       uas: "Preliminary drone sizing tool: estimates weight, propulsion, battery and endurance from your mission.",
       compo: "Design fiberglass or carbon molds from STL, 3MF, OBJ or STEP files, right in your browser, without uploading your files.",
+      telem: "Overlay your flight telemetry (altitude, speed, battery, radio link, GPS track) from an EdgeTX, ArduPilot, INAV or DJI log onto your videos, right in your browser.",
+      video: "Video",
       community: "Community",
       openGh: "Open on GitHub Pages →",
       openRender: "Open on Render →",
