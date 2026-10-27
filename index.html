@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>tguillaume02 · Applications</title>
-<meta name="description" content="Vox-Pack, FlyWithMe, UAS Sizing Tool, CompoForm et Telemetry Overlay : des outils pour les pilotes RC, les drones et la fabrication composite.">
+<meta name="description" content="Vox-Pack-Web, FlyWithMe, UAS Sizing Tool, CompoForm et Telemetry Overlay : des outils pour les pilotes RC, les drones et la fabrication composite.">
 <meta name="theme-color" content="#0b1015">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -176,7 +176,7 @@
       </svg>
     </div>
     <div class="body">
-      <h2>Vox-Pack<span class="badge">EdgeTX</span></h2>
+      <h2>Vox-Pack-Web<span class="badge">EdgeTX</span></h2>
       <p data-i18n="vox">Crée les fichiers de voix de ta radio EdgeTX : annonces personnalisées, prêtes à copier sur la carte SD.</p>
       <span class="link" data-i18n="openGh">Ouvrir sur GitHub Pages →</span>
     </div>
@@ -385,7 +385,7 @@
   const I18N = {
     en: {
       pageTitle: "tguillaume02 · Apps",
-      metaDesc: "Vox-Pack, FlyWithMe, UAS Sizing Tool, CompoForm and Telemetry Overlay: tools for RC pilots, drones and composite manufacturing.",
+      metaDesc: "Vox-Pack-Web, FlyWithMe, UAS Sizing Tool, CompoForm and Telemetry Overlay: tools for RC pilots, drones and composite manufacturing.",
       title: "My <span>apps</span>",
       intro: "Tools for RC pilots, drones and composite manufacturing. Click a card to open the app.",
       vox: "Create the voice files for your EdgeTX radio: custom announcements, ready to copy to the SD card.",
@@ -403,8 +403,8 @@
       shotAlt: "Screenshot of "
     }
   };
-  const LANG = (navigator.languages || [navigator.language || "fr"])
-    .some(l => l.toLowerCase().startsWith("fr")) ? "fr" : "en";
+  const LANG = ((navigator.languages && navigator.languages[0]) || navigator.language || "fr")
+    .toLowerCase().startsWith("fr") ? "fr" : "en";
   const t = key => (I18N[LANG] && I18N[LANG][key]) || null;
 
   if (LANG !== "fr") {
