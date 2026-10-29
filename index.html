@@ -73,7 +73,11 @@
     box-shadow: var(--shadow);
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .card:hover, .card:focus-visible {
+  /* Carte contenant plusieurs liens : le lien principal englobe vignette + texte */
+  .card-main { display: flex; flex-direction: column; flex: 1; color: inherit; text-decoration: none; outline: none; }
+  .video-link { padding: 0 18px 18px; margin-top: -6px; font-size: .85rem; font-weight: 500; color: var(--accent); text-decoration: none; }
+  .video-link:hover, .video-link:focus-visible { text-decoration: underline; outline: none; }
+  .card:hover, .card:focus-visible, .card:focus-within {
     transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
     border-color: var(--accent);
@@ -321,8 +325,8 @@
   </a>
 
   <!-- ===================== TELEMETRY OVERLAY ===================== -->
-  <a class="card" href="https://tguillaume02.github.io/telemetry-overlay/" target="_blank" rel="noopener"
-     data-shot="https://tguillaume02.github.io/telemetry-overlay/captures/interface.png">
+  <div class="card" data-shot="https://tguillaume02.github.io/telemetry-overlay/presentation/Screenshot.png">
+  <a class="card-main" href="https://tguillaume02.github.io/telemetry-overlay/" target="_blank" rel="noopener">
     <div class="thumb">
       <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vidéo de vol avec jauges de télémétrie incrustées">
         <defs>
@@ -358,6 +362,8 @@
       <span class="link" data-i18n="openGh">Ouvrir sur GitHub Pages →</span>
     </div>
   </a>
+  <a class="video-link" href="https://tguillaume02.github.io/telemetry-overlay/presentation/telemetry-overlay-presentation-en-20mb.mp4" target="_blank" rel="noopener"><span aria-hidden="true">▶</span> <span data-i18n="watchVideo">Voir la vidéo de présentation (EN)</span></a>
+  </div>
 
 </main>
 
@@ -397,6 +403,7 @@
       community: "Community",
       openGh: "Open on GitHub Pages →",
       openRender: "Open on Render →",
+      watchVideo: "Watch the presentation video",
       youtube: "My YouTube channel",
       kofi: "Support me on Ko-fi",
       ad: "Advertisement",
@@ -428,7 +435,7 @@
   document.querySelectorAll(".card").forEach(card => {
     const thumb = card.querySelector(".thumb");
     const src = card.dataset.shot ||
-      "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(card.href) + "?w=1200&h=750";
+      "https://s.wordpress.com/mshots/v1/" + encodeURIComponent(card.href || card.querySelector("a").href) + "?w=1200&h=750";
     const img = new Image();
     img.alt = (t("shotAlt") || "Capture d'écran de ") + card.querySelector("h2").firstChild.textContent.trim();
     img.loading = "lazy";
